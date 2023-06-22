@@ -1,4 +1,0 @@
-Largo=1280
-Alto=720
-directorio imagenes=C:/Users/ivana/Programacion/proyectos_Py/Redimensionador/imagenes
-directorio redimension=C:/Users/ivana/Programacion/proyectos_Py/Redimensionador/redimensionadas
