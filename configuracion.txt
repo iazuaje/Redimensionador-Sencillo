@@ -1,4 +1,0 @@
-Largo=1280
-Alto=720
-directorio imagenes=C:/Users/Win 7/Desktop/PROGRAMACION/Python/Redimensionador v1.5/imagenes
-directorio redimension=C:/Users/Win 7/Desktop/PROGRAMACION/Python/Redimensionador v1.5/redimensionadas
