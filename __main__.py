@@ -1,5 +1,5 @@
 import src.gui as gui
-def run():
+def main():
 	gui.iniciarGUI()
 
-run()
+main()

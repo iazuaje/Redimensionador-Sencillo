@@ -2,14 +2,6 @@ import src.backend as rd
 import PySimpleGUI as sg
 import os
 
-def definirTitlebar():
-    titlebar = sg.Titlebar(title = "Redimensionador - 1.6 - Iván Azuaje 2023",
-    icon = None,
-    text_color = "black",
-    font = "BlackChancery 10")
-    return titlebar
-
-
 def definirColumna1(dir_imagenes):
     archivos = [[sg.Listbox(values = rd.actualizarListaArchivos(dir_imagenes), key = "elementos", size = (20, 8))]]
     columna1 = [
@@ -30,9 +22,7 @@ def definirColumna2(ancho, largo):
 def definirVentana(dir_imagenes, ancho, largo):
     columna1 = definirColumna1(dir_imagenes)
     columna2 = definirColumna2(ancho, largo)
-    titlebar = definirTitlebar()
     layout = [
-        [titlebar],
         [sg.Text("Redimensionador", pad = (100,1),
                  justification = "center", font = "BlackChancery 22",
                  text_color = "white")
@@ -62,7 +52,8 @@ def event_loop(ventana, dir_imagenes, dir_redimension):
 
             rd.llamar_acto(_ancho, _largo, dir_imagenes, dir_redimension)
             cantidad = len(os.listdir(f"{dir_imagenes}"))
-            sg.popup(f"Se han redimensionado {cantidad} archivos.", title = "Éxito", font = "BlackChancery 10")
+            if cantidad > 0:
+                sg.popup(f"Se han redimensionado {cantidad} archivos.", title = "Éxito", font = "BlackChancery 10")
         #========================================================================================
         elif evento == "Salir :(" or evento == sg.WIN_CLOSED:
             break
@@ -70,11 +61,12 @@ def event_loop(ventana, dir_imagenes, dir_redimension):
 
 def iniciarGUI():
     sg.theme('Dark Amber')
+    rd.iniciar()
     ancho, largo, dir_imagenes, dir_redimension = rd.leer_config()
     #===========================================================================#
     layout = definirVentana(dir_imagenes, ancho, largo)
     #===========================================================================#
-    ventana = sg.Window("REDIMENSIONADOR", layout, margins=(10,10))
+    ventana = sg.Window("Redimensionador - 1.6 - Iván Azuaje 2023", layout, margins=(10,10), icon = "icono.ico")
     
     event_loop(ventana, dir_imagenes, dir_redimension)
 
